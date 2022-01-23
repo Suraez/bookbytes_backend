@@ -14,15 +14,15 @@ router.get('/all', async(req, res) => {
 
 router.post('/add', async(req, res) => {
     
-    const newBook = {
+    const newBook = new Book({
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
         faculty: req.body.faculty
-    }
+    })
 
     newBook.save((err, result) => {
-        if (err) res.err(err.message);
+        if (err) res.send(err.message);
         else return res.send(result);
     })
 })
