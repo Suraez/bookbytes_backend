@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { emit } = require("nodemon");
 
 const UserSchema = mongoose.Schema({
   name: {
@@ -9,8 +8,7 @@ const UserSchema = mongoose.Schema({
     maxlength: 20,
   },
   email: {
-    type: email,
-    required: true,
+    type: String,
     minlength: 5,
     maxlength: 25,
   },
@@ -26,6 +24,8 @@ const UserSchema = mongoose.Schema({
   },
   hash: String,
   salt: String,
+  // added properties
+  googleId: String,
 });
 
 module.exports = mongoose.model('User', UserSchema);
